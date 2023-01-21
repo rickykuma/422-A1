@@ -15,14 +15,14 @@ const app = express();
 const MoviesDB = require("./modules/moviesDB");
 const db = new MoviesDB();
 const cors = require('cors')
-const bodyParser = require("body-parser")
+
 const dotenv = require('dotenv').config();
 var HTTP_PORT = process.env.PORT || 8080;
 const mongoose = require("mongoose");
 
 app.use(cors())
 app.use(express.json())
-app.use(bodyParser.json());
+
 
 db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
   app.listen(HTTP_PORT, ()=>{
